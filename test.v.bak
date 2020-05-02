@@ -1,0 +1,179 @@
+module test;
+wire [31:0] s1,s2,s3,w1,s4,s5,s6,c1,s7,s8,s9,s10,s11,s12,c3,c4,s13,c7,s14,s15,c5,c6,c8,s16,c11,c2,c13,c15;
+wire c12,c10,c9,c14;
+reg clk,rst,ena_pc;//pc
+
+
+
+
+
+initial//pc
+   begin
+rst=0;
+clk=0;
+   end
+always #50 clk=~clk;
+assign c11=c9&c10;
+assign c12=~c10;
+assign c13=c14&c12;
+assign c15=c11|c13;
+
+reg [31:0]alu1_a;//alu1
+reg[3:0]alu1_crl;
+wire [31:0]alu1_al;
+wire[3:0]alu1_crll;
+
+initial//alu_1&&alu_2
+   begin
+alu1_a=32'b1;
+alu1_crl=4'b0000;//+
+   end
+assign alu1_al=alu1_a;
+assign alu1_crll=alu1_crl;
+
+
+reg wena_im,rena_im;//IM
+wire wena_iml,rena_iml;
+initial
+   begin
+wena_im=0;
+rena_im=1;
+   end
+assign wena_iml=wena_im;
+assign rena_iml=rena_im;
+
+
+
+ram im(.wena(wena_iml),.rena(rena_iml),.addr(s1),.data_out(s4));
+ram data(.rena(c5),.wena(c6),.addr(s14),.data_in(s10),.data_out(s15),.clk(clk),.order(s4));
+pca pc1(.clk(clk),.rst(rst),.data_in(s2),.data_out(s1));
+alu alu1(.a(alu1_al),.b(s1),.r(s3),.aluc(alu1_crll));
+//alu alu2(.a(s3),.b(s8),.r(s9),.aluc(alu1_crll));
+alu alu2(.a(s3),.b(s5),.r(s9),.aluc(alu1_crll));
+alu alu3(.a(s11),.b(s13),.aluc(c7),.r(s14),.zero(c10));
+sixteentodou se1(.a(s4),.b(s5));
+MUXfour mux1(.a(s4),.b(s4),.crl(c1),.c(s6));//mux1
+MUX     mux2(.a(s10),.b(s5),.crl(c4),.c(s13));
+MUX     mux3(.a(s14),.b(s15),.crl(c8),.c(s12));
+MUX     mux4(.a(s3),.b(s9),.crl(c15),.c(s16));
+MUX     mux5(.a(s16),.b(s7),.crl(c2),.c(s2));
+SHL2    shl(.a(s4),.b(s7),.pcn(s3));
+//OSHL2   shl2(.a(s5),.b(s8));
+RF   rf(.we(c3),.raddr1(s4[25:21]),.raddr2(s4[20:16]),.waddr(s6),. wdata(s12),.rdata1(s11),.rdata2(s10),.clk(clk));
+CU   cu(.c(s4),.regdst(c1),.jump(c2),.regwr(c3),.alusrc(c4),.memrd(c5),.memwr(c6),.aluop(c7),.memtoreg(c8),.branch(c9),.bne(c14));
+endmodule
+alu
+module alu(
+        input [31:0] a,        //OP1
+        input [31:0] b,        //OP2
+        input [5:0] aluc,    //controller
+        output [31:0] r,    //result
+        output zero,
+        output carry,
+        output negative,
+        output overflow);
+        
+    parameter Addu    =    4'b0000;    //r=a+b unsigned
+    parameter Add    =    4'b0010;    //r=a+b signed
+    parameter Subu    =    4'b0001;    //r=a-b unsigned
+    parameter Sub    =    4'b0011;    //r=a-b signed
+    parameter And    =    4'b0100;    //r=a&b
+    parameter Or    =    4'b0101;    //r=a|b
+    parameter Xor    =    4'b0110;    //r=a^b
+    parameter Nor    =    4'b0111;    //r=~(a|b)
+    parameter Lui1    =    4'b1000;    //r={b[15:0],16'b0}
+    parameter Lui2    =    4'b1001;    //r={b[15:0],16'b0}
+    parameter Slt    =    4'b1011;    //r=(a-b<0)?1:0 signed
+    parameter Sltu    =    4'b1010;    //r=(a-b<0)?1:0 unsigned
+    parameter Sra    =    4'b1100;    //r=b>>>a 
+    parameter Sll    =    4'b1110;    //r=b<<a
+    parameter Srl    =    4'b1101;    //r=b>>a
+    
+
+    parameter Divu   = 6'b010000;    //r=a/b
+    parameter Multu   = 6'b010001;     
+    parameter bits=31;
+    parameter ENABLE=1,DISABLE=0;
+    
+    reg [32:0] result;
+    wire signed [31:0] sa=a,sb=b;
+    /*Divu*/
+    reg [4:0]  count=0; 
+    reg [31:0] reg_qu=0; 
+    reg [31:0] reg_ru=0; 
+    reg [31:0] reg_bu=0; 
+    reg busy=0;
+    reg r_signu=0;
+    wire [31:0]rr,qq; 
+    assign rr = r_signu? reg_ru + reg_bu : reg_ru; 
+    assign qq = reg_qu;
+    wire [32:0] sub_add ;
+    assign sub_add= r_signu?({reg_ru,qq[31]} + {1'b0,reg_bu}):({reg_ru,qq[31]} - {1'b0,reg_bu});
+
+
+    /**/
+    always@(*)begin
+        case(aluc)
+            Addu: begin
+                result=a+b;
+            end
+            Subu: begin
+                result=a-b;
+            end
+            Add: begin
+                result=sa+sb;
+            end
+            Sub: begin
+                result=sa-sb;
+            end
+            Sra: begin
+                if(a==0) {result[31:0],result[32]}={b,1'b0};
+                else {result[31:0],result[32]}=sb>>>(a-1);
+            end
+            Srl: begin
+                if(a==0) {result[31:0],result[32]}={b,1'b0};
+                else {result[31:0],result[32]}=b>>(a-1);
+            end
+            Sll: begin
+                result=b<<a;
+            end
+            And: begin
+                result=a&b;
+            end
+            Or: begin
+                result=a|b;
+            end
+            Xor: begin
+                result=a^b;
+            end
+            Nor: begin
+                result=~(a|b);
+            end
+            Sltu: begin
+                result=a<b?1:0;
+            end
+            Slt: begin
+                result=sa<sb?1:0;
+            end
+            Lui1,Lui2: result = {b[15:0], 16'b0};
+
+            Divu:begin 
+                 result=a/b;           
+            end//DIV
+
+            Multu:begin 
+                 result=a*b;   
+            end
+
+            default:
+                result=a+b;
+        endcase
+    end
+    
+    assign r=result[31:0];
+    assign carry = result[32]; 
+    assign zero=(a==b)?1:0;
+    assign negative=result[31];
+    assign overflow=result[32];
+endmodule
+

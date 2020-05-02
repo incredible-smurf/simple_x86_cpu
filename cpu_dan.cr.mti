@@ -1,0 +1,150 @@
+C:/modelsim_dlx64_10.6c/examples/clk_cu.v {1 {vlog -work work -stats=none C:/modelsim_dlx64_10.6c/examples/clk_cu.v
+Model Technology ModelSim DE-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module clk_cu
+
+Top level modules:
+	clk_cu
+
+} {} {}} C:/modelsim_dlx64_10.6c/examples/alu.v {1 {vlog -work work -stats=none C:/modelsim_dlx64_10.6c/examples/alu.v
+Model Technology ModelSim DE-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module alu
+
+Top level modules:
+	alu
+
+} {} {}} C:/modelsim_dlx64_10.6c/examples/MUX.v {1 {vlog -work work -stats=none C:/modelsim_dlx64_10.6c/examples/MUX.v
+Model Technology ModelSim DE-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module MUX
+
+Top level modules:
+	MUX
+
+} {} {}} C:/modelsim_dlx64_10.6c/examples/sixteentodou.v {1 {vlog -work work -stats=none C:/modelsim_dlx64_10.6c/examples/sixteentodou.v
+Model Technology ModelSim DE-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module sixteentodou
+
+Top level modules:
+	sixteentodou
+
+} {} {}} C:/modelsim_dlx64_10.6c/examples/clk_ir.v {1 {vlog -work work -stats=none C:/modelsim_dlx64_10.6c/examples/clk_ir.v
+Model Technology ModelSim DE-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module clk_ir
+
+Top level modules:
+	clk_ir
+
+} {} {}} C:/modelsim_dlx64_10.6c/examples/clk_pc.v {1 {vlog -work work -stats=none C:/modelsim_dlx64_10.6c/examples/clk_pc.v
+Model Technology ModelSim DE-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module clk_pc
+
+Top level modules:
+	clk_pc
+
+} {} {}} C:/modelsim_dlx64_10.6c/examples/nonclkrf.v {1 {vlog -work work -stats=none C:/modelsim_dlx64_10.6c/examples/nonclkrf.v
+Model Technology ModelSim DE-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module nonclkRF
+
+Top level modules:
+	nonclkRF
+
+} {} {}} C:/modelsim_dlx64_10.6c/examples/MUXfour.v {1 {vlog -work work -stats=none C:/modelsim_dlx64_10.6c/examples/MUXfour.v
+Model Technology ModelSim DE-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module MUXfour
+
+Top level modules:
+	MUXfour
+
+} {} {}} C:/modelsim_dlx64_10.6c/examples/CU.v {1 {vlog -work work -stats=none C:/modelsim_dlx64_10.6c/examples/CU.v
+Model Technology ModelSim DE-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module CU
+
+Top level modules:
+	CU
+
+} {} {}} C:/modelsim_dlx64_10.6c/examples/ram.v {1 {vlog -work work -stats=none C:/modelsim_dlx64_10.6c/examples/ram.v
+Model Technology ModelSim DE-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module ram
+
+Top level modules:
+	ram
+
+} {} {}} C:/modelsim_dlx64_10.6c/examples/testduo.v {1 {vlog -work work -stats=none C:/modelsim_dlx64_10.6c/examples/testduo.v
+Model Technology ModelSim DE-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module testduo
+
+Top level modules:
+	testduo
+
+} {} {}} C:/modelsim_dlx64_10.6c/examples/SHL2.v {1 {vlog -work work -stats=none C:/modelsim_dlx64_10.6c/examples/SHL2.v
+Model Technology ModelSim DE-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module SHL2
+
+Top level modules:
+	SHL2
+
+} {} {}} C:/modelsim_dlx64_10.6c/examples/clkram.v {1 {vlog -work work -stats=none C:/modelsim_dlx64_10.6c/examples/clkram.v
+Model Technology ModelSim DE-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module clkram
+
+Top level modules:
+	clkram
+
+} {} {}} C:/modelsim_dlx64_10.6c/examples/pc.v {1 {vlog -work work -stats=none C:/modelsim_dlx64_10.6c/examples/pc.v
+Model Technology ModelSim DE-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module pca
+
+Top level modules:
+	pca
+
+} {} {}} C:/modelsim_dlx64_10.6c/examples/div.v {1 {vlog -work work -stats=none C:/modelsim_dlx64_10.6c/examples/div.v
+Model Technology ModelSim DE-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module DIVU
+-- Compiling module DIV
+
+Top level modules:
+	DIVU
+	DIV
+
+} {} {}} C:/modelsim_dlx64_10.6c/examples/MUX4.v {1 {vlog -work work -stats=none C:/modelsim_dlx64_10.6c/examples/MUX4.v
+Model Technology ModelSim DE-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module MUX4
+
+Top level modules:
+	MUX4
+
+} {} {}} C:/modelsim_dlx64_10.6c/examples/start.v {1 {vlog -work work -stats=none C:/modelsim_dlx64_10.6c/examples/start.v
+Model Technology ModelSim DE-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module all
+
+Top level modules:
+	all
+
+} {} {}} C:/modelsim_dlx64_10.6c/examples/clk_temp.v {1 {vlog -work work -stats=none C:/modelsim_dlx64_10.6c/examples/clk_temp.v
+Model Technology ModelSim DE-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module clk_temp
+
+Top level modules:
+	clk_temp
+
+} {} {}} C:/modelsim_dlx64_10.6c/examples/test.v {1 {vlog -work work -stats=none C:/modelsim_dlx64_10.6c/examples/test.v
+Model Technology ModelSim DE-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module test
+
+Top level modules:
+	test
+
+} {} {}} C:/modelsim_dlx64_10.6c/examples/Oshl2.v {1 {vlog -work work -stats=none C:/modelsim_dlx64_10.6c/examples/Oshl2.v
+Model Technology ModelSim DE-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module OSHL2
+
+Top level modules:
+	OSHL2
+
+} {} {}} C:/modelsim_dlx64_10.6c/examples/RF.v {1 {vlog -work work -stats=none C:/modelsim_dlx64_10.6c/examples/RF.v
+Model Technology ModelSim DE-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module RF
+
+Top level modules:
+	RF
+
+} {} {}}

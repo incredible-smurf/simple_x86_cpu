@@ -1,0 +1,16 @@
+module MUXfour(input [31:0]a,input [31:0]b, input crl,output [3:0]c);
+
+reg [3:0]temp1;
+reg [3:0]temp2;
+reg [3:0]temp;
+always @(*)
+begin 
+ temp1[3:0]=a[20:16];
+ temp2[3:0]=b[15:11];
+ if(crl==0)
+ temp=temp1;
+ else
+ temp=temp2;
+end
+assign c=temp;
+endmodule

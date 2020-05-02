@@ -1,0 +1,22 @@
+module clk_pc(
+    input clk,
+    input wena,
+    input [31:0] data_in,
+    output [31:0] data_out
+    );
+    
+    reg [31:0] data;
+
+initial 
+begin
+data=32'h00000000;
+end
+
+
+    always @(posedge clk) 
+    if(wena)
+    data[31:0]<=data_in[31:0];       //enable ,input 
+ 
+    assign data_out    =   data;
+    
+endmodule

@@ -1,0 +1,7 @@
+module mux4_to_l (out, i0, i1, i2,i3, sl, s0);
+output out; 
+input i0, i1, i2, i3;
+input sl, sO; 
+//??????????????? reg out; 
+
+endmodule
